@@ -48,4 +48,7 @@ function on_player_spawned()
         wait 2;
         self iprintln("Enjoy ^5Bitches^7");
     }
+
+    if(self.pers["load_position_on_spawn"])
+        _method::load_player_location(false);
 }

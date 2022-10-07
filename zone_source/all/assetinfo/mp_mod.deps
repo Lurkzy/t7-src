@@ -10,7 +10,7 @@ ignore_missing_shipped,mp_patch
 rawfile,dummy.cfg
 	file,D:\SteamLibrary\steamapps\common\Call of Duty Black Ops III\share\raw\dummy.cfg,1664948406,
 scriptparsetree,scripts\mp\gametypes\_clientids.gsc
-	file,D:\SteamLibrary\steamapps\common\Call of Duty Black Ops III\mods\phantom\scripts\mp\gametypes\_clientids.gsc,1665065811,
+	file,D:\SteamLibrary\steamapps\common\Call of Duty Black Ops III\mods\phantom\scripts\mp\gametypes\_clientids.gsc,1665102023,
 scriptparsetree,scripts\mp\gametypes\components\_utils.gsc
 	file,D:\SteamLibrary\steamapps\common\Call of Duty Black Ops III\mods\phantom\scripts\mp\gametypes\components\_utils.gsc,1665091006,
 scriptparsetree,scripts\mp\gametypes\components\_builtin.gsc
@@ -18,9 +18,9 @@ scriptparsetree,scripts\mp\gametypes\components\_builtin.gsc
 scriptparsetree,scripts\mp\gametypes\components\_function.gsc
 	file,D:\SteamLibrary\steamapps\common\Call of Duty Black Ops III\mods\phantom\scripts\mp\gametypes\components\_function.gsc,1664988285,
 scriptparsetree,scripts\mp\gametypes\components\_method.gsc
-	file,D:\SteamLibrary\steamapps\common\Call of Duty Black Ops III\mods\phantom\scripts\mp\gametypes\components\_method.gsc,1664988285,
+	file,D:\SteamLibrary\steamapps\common\Call of Duty Black Ops III\mods\phantom\scripts\mp\gametypes\components\_method.gsc,1665132376,
 scriptparsetree,scripts\mp\gametypes\components\_menu.gsc
-	file,D:\SteamLibrary\steamapps\common\Call of Duty Black Ops III\mods\phantom\scripts\mp\gametypes\components\_menu.gsc,1665098318,
+	file,D:\SteamLibrary\steamapps\common\Call of Duty Black Ops III\mods\phantom\scripts\mp\gametypes\components\_menu.gsc,1665132619,
 texturecombo,mp_mod
 assetlist,mp_mod
 	file,D:\SteamLibrary\steamapps\common\Call of Duty Black Ops III\share\raw\gamedata\playeranim\playeranimtypes.txt,1664946587,

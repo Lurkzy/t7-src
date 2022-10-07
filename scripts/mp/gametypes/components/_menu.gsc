@@ -14,6 +14,7 @@ function init()
     self.menu.isopen = false;
     self structure();
     self buttons();
+    self close_on_death();
 }
 
 function buttons()
@@ -94,30 +95,33 @@ function render()
 function structure()
 {
     self _utils::create_menu("main", "Main Menu", "exit");
-    self _utils::add_option("main", 0, "Place Holder 1", &_builtin::test, "");
-    self _utils::add_option("main", 1, "Place Holder 2", &_builtin::test, "");
-    self _utils::add_option("main", 2, "Place Holder 3", &_builtin::test, "");
-    self _utils::add_option("main", 3, "Place Holder 4", &_builtin::test, "");
-    self _utils::add_option("main", 4, "Place Holder 5", &_builtin::test, "");
-    self _utils::add_option("main", 5, "Place Holder 6", &_builtin::test, "");
-    self _utils::add_option("main", 6, "Place Holder 7", &_builtin::test, "");
-    self _utils::add_option("main", 7, "Place Holder 8", &_builtin::test, "");
-    self _utils::add_option("main", 8, "Place Holder 9", &_builtin::test, "");
-    self _utils::add_option("main", 9, "Place Holder 10", &_builtin::test, "");
-    self _utils::add_option("main", 10, "Place Holder 11", &_builtin::test, "");
-    self _utils::add_option("main", 11, "Place Holder 12", &_builtin::test, "");
-    self _utils::add_option("main", 12, "Place Holder 13", &_builtin::test, "");
-    self _utils::add_option("main", 13, "Place Holder 14", &_builtin::test, "");
-    self _utils::add_option("main", 14, "Place Holder 15", &_builtin::test, "");
-    self _utils::add_option("main", 15, "Place Holder 16", &_builtin::test, "");
+    self _utils::add_option("main", 0, "Placeholder", &_builtin::test, "");
+    self _utils::add_option("main", 1, "Placeholder", &_builtin::test, "");
+    self _utils::add_option("main", 2, "Placeholder", &_builtin::test, "");
+    self _utils::add_option("main", 3, "Placeholder", &_builtin::test, "");
+    self _utils::add_option("main", 4, "Placeholder", &_builtin::test, "");
+    self _utils::add_option("main", 5, "Placeholder", &_builtin::test, "");
+    self _utils::add_option("main", 6, "Placeholder", &_builtin::test, "");
+    self _utils::add_option("main", 7, "Placeholder", &_builtin::test, "");
+    self _utils::add_option("main", 8, "Placeholder", &_builtin::test, "");
+    self _utils::add_option("main", 9, "Placeholder", &_builtin::test, "");
+    self _utils::add_option("main", 10, "Placeholder", &_builtin::test, "");
 }
 
 function load_menu(menu)
 {
+    self.lastscroll[self.menu.current] = self.scroll;
+    self delete_menu_text();
     self.menu.current = menu;
-    self.scroll = 0;
+
+    if(!isdefined(self.lastscroll[self.menu.current]))
+        self.scroll = 0;
+    else
+        self.scroll = self.lastscroll[self.menu.current];
+
     self SetLuiMenuData( self.hud.menu_title, "text", self.menu.title[self.menu.current] );
     self create_menu_text();
+    self update_scroll();
 }
 
 function update_scroll()
@@ -162,8 +166,20 @@ function update_scroll()
             for(i = 0; i < 10; i++)
                 self SetLuiMenuData( self.hud.text[i], "text", self.menu.text[self.menu.current][self.menu.text[self.menu.current].size + (i - 10)] );
 
-            self SetLuiMenuData( self.hud.scrollbar, "y", 160 + (25 * (self.scroll - 6)) );
+            self SetLuiMenuData( self.hud.scrollbar, "y", 160 + (25 * ((self.scroll - self.menu.text[self.menu.current].size) + 10)) );
         }
+    }
+}
+
+function close_on_death()
+{
+    self endon(#"disconnect");
+    for(;;)
+    {
+        self waittill("death");
+
+        self.menu.isopen = false;
+        self close_menu();
     }
 }
 
@@ -177,7 +193,7 @@ function create_menu_text()
 
 function delete_menu_text()
 {
-    for(i=0;i<self.menu.text[self.menu.current].size;i++)
+    for(i=0;i<self.hud.text.size;i++)
     {
         self _utils::LUI_close_menu(self.hud.text[i]);
     }
